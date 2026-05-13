@@ -1,15 +1,15 @@
-import { useState } from "react";
-import { PLANTS } from "../data.js";
-import { Plant } from "./Plant.jsx";
+import Plant from "./Plant.jsx";
 import "./plants.css";
 
-export default function Plants({ setCart }) {
-  const [plants] = useState(PLANTS);
-
+export default function Plants({ plants, addToCart }) {
   return (
-    <section>
+    <section className="plants">
       <h2>Plants</h2>
-      <ul className="plants">{plants.map((plant) => Plant)}</ul>
+      <ul>
+        {plants.map((plant) => (
+          <Plant key={plant.id} addToCart={addToCart} />
+        ))}
+      </ul>
     </section>
   );
 }
